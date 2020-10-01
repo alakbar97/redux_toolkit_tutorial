@@ -6,9 +6,9 @@ import { api } from "./api";
 function* workerFetchDogs(action) {
   try {
     const result = yield call(api.dogs.getDogs, action.payload);
-    yield put(actions.fetchDogBreedSuccess(result.data));
+    yield put(actions.fetchDogBreedSuccess(result.data.message));
   } catch (error) {
-    throw new Error(error);
+    yield put(actions.setError(error.message));
   }
 }
 

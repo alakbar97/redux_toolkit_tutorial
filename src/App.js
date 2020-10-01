@@ -16,6 +16,8 @@ const App = () => {
 
   const loading = useSelector((state) => state.getDogs.loading);
 
+  const error = useSelector((state) => state.getDogs.error);
+
   const [dogName, setDogName] = useState("");
 
   const onButtonHandler = (e) => {
@@ -24,20 +26,31 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App" style={{ textAlign: "center" }}>
       <input
+        style={{ marginRight: 15 }}
         placeholder="Enter Dog Breed"
         value={dogName}
         onChange={(e) => setDogName(e.target.value)}
       />
-      <button onClick={onButtonHandler}>Search Dog</button>
+      <button style={{ marginBottom: 25 }} onClick={onButtonHandler}>
+        Search Dog
+      </button>
       {loading ? (
         <p>Loading ...</p>
-      ) : dog ? (
+      ) : error ? (
+        <p>There is no such a dog breed available</p>
+      ) : (
         <div>
-          <img alt="phot" src={dog?.message} />
+          {dog ? (
+            <img
+              style={{ width: 300, height: 300 }}
+              alt="dog_photo"
+              src={dog}
+            />
+          ) : null}
         </div>
-      ) : null}
+      )}
     </div>
   );
 };
