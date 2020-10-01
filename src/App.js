@@ -12,11 +12,11 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  const dog = useSelector((state) => state.getDogs.data);
+  const dog = useSelector((state) => state.Dogs.data);
 
-  const loading = useSelector((state) => state.getDogs.loading);
+  const loading = useSelector((state) => state.Dogs.loading);
 
-  const error = useSelector((state) => state.getDogs.error);
+  const error = useSelector((state) => state.Dogs.error);
 
   const [dogName, setDogName] = useState("");
 

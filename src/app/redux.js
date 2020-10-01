@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const dogs = createSlice({
-  name: "getDogs",
+  name: "Dogs",
   initialState,
   reducers: {
     fetchDogBreed(state, action) {
